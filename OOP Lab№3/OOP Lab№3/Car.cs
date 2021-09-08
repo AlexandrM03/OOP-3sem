@@ -18,7 +18,7 @@ namespace OOP_Lab_3
         private string model;
         private ushort year;
         private string color;
-        private uint price;
+        private int price;
         private string number;
 
         // Свойства
@@ -31,7 +31,7 @@ namespace OOP_Lab_3
                     Console.WriteLine("Неверный ID!");
             }
         }
-        public string Model { get { return Model; } }
+        public string Model { get => model; set { model = value; } }
         public ushort Year { 
             get { return year; }
             set { 
@@ -43,11 +43,11 @@ namespace OOP_Lab_3
         } 
         public string Color { 
             get { return color; }
-            set { color = value; }
+            private set { }
         }
-        public uint Price { 
+        public int Price { 
             get { return price; }
-            set { Price = value; }
+            set { price = value; }
         }
         public string Number { 
             get { return number; }
@@ -66,7 +66,7 @@ namespace OOP_Lab_3
         // Конструкторы
         static Car()
         {
-            Console.WriteLine("Статический конструктор сработал!");
+            Console.WriteLine("Статический конструктор сработал!\n");
             country = "Belarus";
             count = 0;
         }
@@ -80,7 +80,7 @@ namespace OOP_Lab_3
             this.id = id;
             Car.count++;
         }
-        public Car(string brand, ushort year, uint price, string color = "unknown", string number = "unknown")
+        public Car(string brand, ushort year, int price, string color = "unknown", string number = "unknown")
         {
             if (year >= 1991 && year <= 2021 && id <= maxId)
             {
@@ -95,7 +95,7 @@ namespace OOP_Lab_3
             else
                 throw new Exception("Некорректный ввод!");
         }
-        public Car(int id, string brand, string model, ushort year, string color, uint price, string number)
+        public Car(int id, string brand, string model, ushort year, string color, int price, string number)
         {
             if (year >= 1991 && year <= 2021 && id <= maxId)
             {
@@ -130,32 +130,7 @@ namespace OOP_Lab_3
 
         public void Print()
         {
-            Console.WriteLine($"\nID: {this.id}\n" +
-                $"Бренд: {this.brand}\n" +
-                $"Модель: {this.model}\n" +
-                $"Год выпуска: {this.year}\n" +
-                $"Цвет: {this.color}\n" +
-                $"Цена: {this.price}$\n" +
-                $"Номер машины: {this.number}\n");
-        }
-
-        // Override
-        public override bool Equals (Object obj)
-        {
-            if (obj == null)
-                return false;
-            Car car = obj as Car;
-            if (car as Car == null)
-                return false;
-            return car.id == this.id;
-        }
-
-        public override int GetHashCode()
-        {
-            if (this.id == -1)
-                return 0;
-            else
-                return 1;
+            Console.WriteLine(this.ToString());
         }
     }
 }
