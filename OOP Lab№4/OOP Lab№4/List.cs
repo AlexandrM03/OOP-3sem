@@ -159,20 +159,20 @@ namespace OOP_Lab_4
             Node node = _head;
             while (node != null)
             {
-                string number = null;
+                string number = "";
                 for (int i = node.Info.Length - 1; i >= 0; i--)
                 {
                     if (char.IsDigit(node.Info[i]))
                     {
-                        number += node.Info[i];
+                        number = number.Insert(0, node.Info[i].ToString());
                         if (i > 0 && char.IsDigit(node.Info[i - 1]))
                             continue;
                         else
                             break;
                     }
                 }
-                if (number != null)
-                    Console.Write(number.Reverse() + "   ");
+                if (number != "")
+                    Console.Write(number + "   ");
                 node = node.GetNextNode;
             }
         }
