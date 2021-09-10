@@ -6,42 +6,86 @@ using System.Threading.Tasks;
 
 namespace OOP_Lab_5
 {
-    class Classes
+    class Printer
     {
-        abstract class Product
+        public void IAmPrinting(Product obj)
         {
-            protected int countOfProducts = 0;
-            public override string ToString() => GetType().Name;
+            Console.WriteLine($"Type: {obj.ToString()}");
         }
+    }
 
-        class Goods : Product
+    abstract class Product
+    {
+        protected int countOfSelledProducts = 0;
+
+        public override string ToString() => GetType().Name;
+        public override int GetHashCode() => countOfSelledProducts;
+        public override bool Equals(object obj) => GetType().Name == obj.ToString();
+        public virtual string Company => "Walmart";
+    }
+
+    abstract class Goods : Product
+    {
+        protected float _money = 150.75f;
+
+        public void TopUp(float value)
         {
-
+            _money += value;
+            ShowMoney();
         }
-
-        class Pastry : Goods
+        public void ShowMoney()
         {
-
+            Console.WriteLine($"Now you have {_money}$");
         }
+        public abstract void Buy(int amount = 1);
+    }
 
-        class Flowers : Goods
+    class Flowers : Goods
+    {
+        private float _cost = 2.5f;
+
+        public override void Buy(int amount = 1)
         {
-
+            if (_money >= amount * _cost)
+            {
+                _money -= amount * _cost;
+                ShowMoney();
+                countOfSelledProducts++;
+            }
+            else
+                Console.WriteLine("You don't have enough money...");
         }
+    }
 
-        class Clocks : Goods
+    class Clocks : Goods
+    {
+        private float _cost = 149.55f;
+
+        public override void Buy(int amount = 1)
         {
-
+            if (_money >= amount * _cost)
+            {
+                _money -= amount * _cost;
+                ShowMoney();
+                countOfSelledProducts++;
+            }
+            else
+                Console.WriteLine("You don't have enough money...");
         }
+    }
 
-        class Cake : Pastry
-        {
+    class Pastry
+    {
 
-        }
+    }
 
-        sealed class Sweets : Pastry
-        {
+    sealed class Cake : Pastry
+    {
 
-        }
+    }
+
+    sealed class Sweets : Pastry
+    {
+
     }
 }

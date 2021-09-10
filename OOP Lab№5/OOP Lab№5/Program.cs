@@ -6,7 +6,15 @@ namespace OOP_Lab_5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Collection<Product> products = new Collection<Product>();
+            products.Add(new Flowers());
+            products.Add(new Clocks());
+            products.Show();
+            Console.WriteLine($"Current size: {products.GetSize()}");
+            Console.WriteLine();
+            products.Delete(0);
+            products.Show();
+            Console.WriteLine($"Current size: {products.GetSize()}");
         }
     }
 }
