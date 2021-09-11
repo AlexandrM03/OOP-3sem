@@ -12,4 +12,9 @@ namespace OOP_Lab_5
         void Delete(int index);
         void Show();
     }
+
+    public interface IPastry
+    {
+        void Print();
+    }
 }

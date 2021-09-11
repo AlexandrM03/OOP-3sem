@@ -8,7 +8,7 @@ namespace OOP_Lab_5
 {
     class Printer
     {
-        public void IAmPrinting(Product obj)
+        public void IAmPrinting(Pastry obj)
         {
             Console.WriteLine($"Type: {obj.ToString()}");
         }
@@ -74,18 +74,35 @@ namespace OOP_Lab_5
         }
     }
 
-    class Pastry
+    abstract class Pastry
     {
-
+        public override string ToString() => GetType().Name;
+        public abstract void Print();
     }
 
-    sealed class Cake : Pastry
+    sealed class Cake : Pastry, IPastry
     {
+        public override void Print()
+        {
+            Console.WriteLine($"|Abstract|\tType of this object: {ToString()}");
+        }
 
+        void IPastry.Print()
+        {
+            Console.WriteLine($"|Interface|\tType of this object: {ToString()}");
+        }
     }
 
-    sealed class Sweets : Pastry
+    sealed class Sweets : Pastry, IPastry
     {
+        public override void Print()
+        {
+            Console.WriteLine($"|Abstract|\tType of this object: {ToString()}");
+        }
 
+        void IPastry.Print()
+        {
+            Console.WriteLine($"|Interface|\tType of this object: {ToString()}");
+        }
     }
 }
