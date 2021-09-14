@@ -37,12 +37,15 @@ namespace OOP_Lab_5
         {
             Console.WriteLine($"Now you have {_money}$");
         }
+        public abstract float Price();
+        public abstract float Weight();
         public abstract void Buy(int amount = 1);
     }
 
     class Flowers : Goods
     {
         private float _cost = 2.5f;
+        private int _weight = 80;
 
         public override void Buy(int amount = 1)
         {
@@ -55,11 +58,14 @@ namespace OOP_Lab_5
             else
                 Console.WriteLine("You don't have enough money...");
         }
+        public override float Price() => _cost;
+        public override float Weight() => _weight;
     }
 
     class Clocks : Goods
     {
         private float _cost = 149.55f;
+        private int _weight = 300;
 
         public override void Buy(int amount = 1)
         {
@@ -72,6 +78,9 @@ namespace OOP_Lab_5
             else
                 Console.WriteLine("You don't have enough money...");
         }
+
+        public override float Price() => _cost;
+        public override float Weight() => _weight;
     }
 
     abstract class Pastry
@@ -95,6 +104,42 @@ namespace OOP_Lab_5
 
     sealed class Sweets : Pastry, IPastry
     {
+
+        public enum Type {
+            Roshen = 0,
+            Kommunarka,
+            Spartak
+        }
+
+        public Info[] companies;
+
+        public struct Info
+        {
+            private float _price;
+            private Type _type;
+
+            public float Price {
+                get => _price;
+                set => _price = value;
+            }
+            public Type Type
+            {
+                get => _type;
+                set => _type = value;
+            }
+        }
+
+        public Sweets()
+        {
+            companies = new Info[3];
+            companies[0].Type = Type.Roshen;
+            companies[0].Price = 1.2f;
+            companies[1].Type = Type.Kommunarka;
+            companies[1].Price = 0.8f;
+            companies[2].Type = Type.Spartak;
+            companies[2].Price = 0.7f;
+        }
+
         public override void Print()
         {
             Console.WriteLine($"|Abstract|\tType of this object: {ToString()}");

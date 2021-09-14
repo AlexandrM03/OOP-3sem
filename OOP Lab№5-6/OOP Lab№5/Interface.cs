@@ -17,4 +17,10 @@ namespace OOP_Lab_5
     {
         void Print();
     }
+
+    public interface ICloneable
+    {
+        object Clone();
+        void Sort();
+    }
 }
