@@ -26,6 +26,8 @@ namespace OOP_Lab_2
             short Short = 4;
             ushort UShort = 4;
 
+            //
+
             Console.WriteLine("bool = {0}, byte = {1}, sbyte = {2}, char = {3}" +
                 "\ndecimal = {4}, double = {5}, float = {6}, int = {7}" +
                 "\nuint = {8}, nint = {9}, nuint = {10}, long = {11}" +
