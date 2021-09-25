@@ -127,10 +127,10 @@ namespace OOP_Lab_2
             }
 
             // 2d
-            StringBuilder Quote = new StringBuilder(" музыка делает");
-            Quote.Insert(0, "Порой");
+            StringBuilder Quote = new StringBuilder(" музыка делает"); // 14
+            Quote.Insert(0, "Порой"); // 5
             Quote.Remove(13, 6);
-            Quote.Append("творит чудеса.");
+            Quote.Append("творит чудеса."); // 14
             Console.WriteLine("\n" + Quote + "\n");
 
             // 3a

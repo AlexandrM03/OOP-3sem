@@ -64,6 +64,12 @@ namespace OOP_Lab_4
             HL.AddNode("545");
             HL.ShowInfo();
             HL.Highlight();
+            Console.WriteLine();
+
+            StatisticOperations statisticOperations = new StatisticOperations();
+            Console.WriteLine($"Конкатенация элементов: {statisticOperations.Concat(HL)}");
+            Console.WriteLine($"Разница между длинами максимальной и минимальной строк: {statisticOperations.Difference(HL)}");
+            Console.WriteLine($"Размер списка: {statisticOperations.GetSize(HL)}");
         }
     }
 }
