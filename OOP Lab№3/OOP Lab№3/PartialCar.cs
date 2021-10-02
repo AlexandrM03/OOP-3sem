@@ -25,10 +25,7 @@ namespace OOP_Lab_3
 
         public override int GetHashCode()
         {
-            if (this.id == -1)
-                return 0;
-            else
-                return id % 10;
+            return id == -1 ? 0 : id % 10;
         }
 
         public override string ToString()

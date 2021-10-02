@@ -23,7 +23,7 @@ namespace OOP_Lab_3
 
         // Свойства
         public int Id {
-            get { return id; }
+            get => id;
             set {
                 if (value <= maxId)
                     id = value;

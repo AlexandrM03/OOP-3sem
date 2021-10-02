@@ -26,7 +26,6 @@ namespace OOP_Lab_5
                 }
             }
         }
-
         public void ParseJSON(Present<Goods> present)
         {
             string json = @"['Flowers', 'Clocks', 'Flowers']";

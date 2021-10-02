@@ -1,5 +1,7 @@
-﻿using System;
+﻿using OOP_Lab_5.Exceptions;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +32,10 @@ namespace OOP_Lab_5
 
         public void TopUp(float value)
         {
+            if (value < 0) throw new TopUpEx("You can not top up negative value", value);
+            if (value > 999999) throw new TopUpEx("Too much...", value);
+
+            Debug.Assert(value <= 999999, "Mnogo");
             _money += value;
             ShowMoney();
         }
@@ -56,7 +62,7 @@ namespace OOP_Lab_5
                 countOfSelledProducts++;
             }
             else
-                Console.WriteLine("You don't have enough money...");
+                throw new BuyEx("You don't have enough money");
         }
         public override float Price() => _cost;
         public override float Weight() => _weight;
@@ -76,7 +82,7 @@ namespace OOP_Lab_5
                 countOfSelledProducts++;
             }
             else
-                Console.WriteLine("You don't have enough money...");
+                throw new BuyEx("You don't have enough money");
         }
 
         public override float Price() => _cost;
