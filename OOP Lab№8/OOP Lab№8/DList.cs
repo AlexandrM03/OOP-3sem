@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Lab_8
 {
-    class MyList<T> : IGeneric<T>
+    class MyList<T> : IGeneric<T> where T : class
     {
         private Node<T> _head;
         private Node<T> _tail;
@@ -25,7 +25,7 @@ namespace OOP_Lab_8
         {
             get
             {
-                if (index > Length - 1) throw new ArgumentOutOfRangeException("index");
+                if (index > Length - 1 || index < 0) throw new WrongIndexException("ERROR: Wrong index");
 
                 Node<T> temp = GetHead();
                 for (int i = 0; i < index; i++)
@@ -37,7 +37,7 @@ namespace OOP_Lab_8
             }
             set
             {
-                if (index > Length - 1) throw new ArgumentOutOfRangeException("index");
+                if (index > Length - 1 || index < 0) throw new WrongIndexException("ERROR: Wrong index");
 
                 Node<T> temp = GetHead();
                 for (int i = 0; i < index; i++)
@@ -90,12 +90,7 @@ namespace OOP_Lab_8
                 nodeNext = nodeNext.NextNode;
             }
 
-            throw new Exception(""); // TODO
-        }
-
-        public void Delete(int index)
-        {
-            Delete(this[index]);
+            throw new WrongElementException("ERROR: Element not found");
         }
 
         public void Show()
