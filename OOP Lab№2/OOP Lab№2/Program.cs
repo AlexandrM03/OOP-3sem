@@ -274,6 +274,8 @@ namespace OOP_Lab_2
             FirstFoo();
             SecondFoo();
             Console.ReadKey();
+            cout << "Hello World"
         }
     }
 }
+
