@@ -13,12 +13,28 @@ namespace OOP_Lab_12
             Console.WriteLine(++i + ". " + (Reflector.IncludeConstructor(car) ? "Car include public constructor" :
                 "Car doesn't include public constructor"));
 
-            Console.Write(++i + ". ");
-            foreach (var method in Reflector.GetPublicMethods(car))
-            {
-                Console.Write(method.Name + "   ");
-            }
+            Console.Write($"{++i}. ");
+            Reflector.GetPublicMethods(car);
             Console.WriteLine();
+
+            Console.Write($"{++i}. ");
+            Reflector.GetPropetry(car);
+            Reflector.GetFields(car);
+            Console.WriteLine();
+
+            Console.Write($"{++i}. ");
+            Reflector.GetInterfaces(car);
+            Console.WriteLine();
+
+            Console.Write($"{++i}. ");
+            Reflector.GetMethodsByParam(car, "Int32 i");
+            Console.WriteLine();
+
+            Console.Write($"{++i}. ");
+            Reflector.InvokeFromFile();
+
+            object ob = Reflector.Create("Toyota", "Camry");
+            Console.Write($"{++i}. {(ob as Car).Brand} {(ob as Car).Model}");
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Lab_12
 {
-    class Car
+    class Car : ICloneable
     {
         private string _brand;
         private string _model;
@@ -23,10 +23,14 @@ namespace OOP_Lab_12
             _model = model;
         }
 
-        public string Brand => _brand;
+        public string Brand 
+        {
+            get => _brand;
+            set => _brand = value;
+        }
         public string Model => _model;
 
-        public string Drive() => "Driving";
-        public string Stop() => "Stopped";
+        public void GetId(int i) => Console.WriteLine(Convert.ToInt32(_model[0]) * i);
+        public object Clone() => MemberwiseClone();
     }
 }
