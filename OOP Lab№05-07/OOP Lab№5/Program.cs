@@ -45,6 +45,9 @@ namespace OOP_Lab_5
                 sweetsInterface.Print();
                 Console.WriteLine();
 
+                // (cake as IPastry).Print();
+                // (cake is IPastry).Print(); // Не вызовет исключение
+
                 printer.IAmPrinting(sweets);
                 printer.IAmPrinting(cake);
                 Console.WriteLine();

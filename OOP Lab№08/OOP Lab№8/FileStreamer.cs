@@ -11,7 +11,7 @@ namespace OOP_Lab_8
     {
         public static void WriteToFile(MyList<string> list)
         {
-            using (StreamWriter sw = new StreamWriter(@"D:\2 курс\Лабораторные по ООП\OOP Lab№8\OOP Lab№8\file.txt"))
+            using (StreamWriter sw = new StreamWriter(@"D:\2 курс\Лабораторные по ООП\OOP Lab№08\OOP Lab№8\file.txt"))
             {
                 Node<string> temp = list.GetHead();
                 while (temp.NextNode != null)
@@ -25,7 +25,7 @@ namespace OOP_Lab_8
 
         public static void ReadFromFile(ref MyList<string> list)
         {
-            using (StreamReader sw = new StreamReader(@"D:\2 курс\Лабораторные по ООП\OOP Lab№8\OOP Lab№8\file.txt"))
+            using (StreamReader sw = new StreamReader(@"D:\2 курс\Лабораторные по ООП\OOP Lab№08\OOP Lab№8\file.txt"))
             {
                 string[] items = sw.ReadToEnd().Split(" --> ");
                 foreach (string item in items)

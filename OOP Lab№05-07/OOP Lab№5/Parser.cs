@@ -12,7 +12,7 @@ namespace OOP_Lab_5
     {
         public void ParseTextFile(Present<Goods> present)
         {
-            StreamReader stream = new StreamReader(@"D:\2 курс\Лабораторные по ООП\OOP Lab№5-6\OOP Lab№5\list.txt");
+            StreamReader stream = new StreamReader(@"D:\2 курс\Лабораторные по ООП\OOP Lab№05-07\OOP Lab№5\list.txt");
             while (stream.ReadLine() is string line)
             {
                 switch (line)
