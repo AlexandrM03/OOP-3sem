@@ -1,0 +1,16 @@
+|Директории|
+bin
+MADInspect
+obj
+test
+
+|Файлы|
+MADDirInfo.cs
+MADDiskInfo.cs
+MADFileInfo.cs
+MADFileManager.cs
+MADLog.cs
+MADLogFile.txt
+OOP Lab№13.csproj
+Program.cs
+test.zip
