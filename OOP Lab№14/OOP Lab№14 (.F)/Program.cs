@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
@@ -17,7 +18,7 @@ namespace OOP_Lab_14
             Car car1 = new Car("Porsche", "911", 15);
             Car car2 = new Car("Lamborghini", "urus", 30);
             Car car3 = new Car("BMW", "i8", 7);
-            Car car4 = new Car("Mercedes ", "AMG", 20);
+            Car car4 = new Car("Mercedes", "AMG", 20);
 
             CustomSerializer.Serialize("binCar.bin", car1);
             CustomSerializer.Serialize("binCar.soap", car2);
@@ -44,17 +45,19 @@ namespace OOP_Lab_14
             }
 
             Console.WriteLine();
+            Regex regex = new Regex(@"<Brand>(?<B>\w+)</Brand><Model>(?<M>\w+)</Model>");
+
             XmlDocument document = new XmlDocument();
             document.Load("List.xml");
             XmlElement xmlRoot = document.DocumentElement;
             XmlNode lamborghini = xmlRoot.SelectSingleNode("descendant::Car[Model='urus']");
-            Console.WriteLine(lamborghini.OuterXml);
+            Console.WriteLine($"{regex.Match(lamborghini.OuterXml).Groups["B"].Value} {regex.Match(lamborghini.OuterXml).Groups["M"].Value}");
 
             Console.WriteLine();
             XmlNodeList allCars = xmlRoot.SelectNodes("*");
             foreach (XmlNode i in allCars)
             {
-                Console.WriteLine(i.OuterXml);
+                Console.WriteLine($"{regex.Match(i.OuterXml).Groups["B"].Value} {regex.Match(i.OuterXml).Groups["M"].Value}");
             }
 
             Console.WriteLine();
